@@ -4,10 +4,12 @@ metadata:
   name: nodriver-bench-job
   namespace: scrape
 spec:
+  completions: 1000 # Run 1000 instances of the job
+  parallelism: 50 # Run up to 50 instances in parallel
   template:
     spec:
       containers:
-      - name: nodriver-bench
-        image: harbor.kymyth.com/library/nodriver-bench:latest
+        - name: nodriver-bench
+          image: harbor.kymyth.com/library/nodriver-bench:latest
       restartPolicy: OnFailure
   backoffLimit: 4
