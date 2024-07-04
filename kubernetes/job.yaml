@@ -4,8 +4,8 @@ metadata:
   name: nodriver-bench-job
   namespace: scrape
 spec:
-  completions: 1000 # Run 1000 instances of the job
-  parallelism: 50 # Run up to 50 instances in parallel
+  # completions: 1000 # Run 1000 instances of the job
+  # parallelism: 50 # Run up to 50 instances in parallel
   template:
     spec:
       containers:
