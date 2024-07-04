@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: nodriver-bench-job
+  namespace: scrape
+spec:
+  template:
+    spec:
+      containers:
+      - name: nodriver-bench
+        image: harbor.kymyth.com/library/nodriver-bench:latest
+      restartPolicy: OnFailure
+  backoffLimit: 4
