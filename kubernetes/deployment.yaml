@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodriver-bench-deployment
+  namespace: multion
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodriver-bench
+  template:
+    metadata:
+      labels:
+        app: nodriver-bench
+      annotations:
+        sidecar.istio.io/inject: "false"
+    spec:
+      containers:
+        - name: nodriver-bench
+          image: harbor.kymyth.com/library/nodriver-bench:latest
+          command: ["/bin/sh"]
+          args: ["-c", "while true; do sleep 30; done;"]
